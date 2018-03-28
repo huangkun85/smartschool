@@ -1,0 +1,86 @@
+﻿@model DataBaseAccess.Dtos.HwCmdRuleDto
+
+@{
+    ViewData["Title"] = "新增规则";
+}
+
+<h2>新建</h2>
+
+<h4>批量命令内容</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CmdType" class="control-label"></label>
+                <input asp-for="CmdType" class="form-control"/>
+                <span asp-validation-for="CmdType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CmdData" class="control-label"></label>
+                <input asp-for="CmdData" class="form-control"/>
+                <span asp-validation-for="CmdData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnableTime" class="control-label"></label>
+                <input id="EnableTime" name="EnableTime"class="form-control"/>
+                <span asp-validation-for="EnableTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpireTime" class="control-label"></label>
+                <input id="ExpireTime" name="ExpireTime" class="form-control"/>
+                <span asp-validation-for="ExpireTime" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>说明</h4>
+            <hr/>
+            <div>
+                <p>
+                    类型为数字<br/>
+                    名字为该条规则的名字<br/>
+                    内容为协议的格式内容,当前支持的值为 19 免打扰时间设置 <br/>
+                    例如免打扰时间设置为 21:10-7:30,21:10-7:30,21:10-7:30,21:10-7:30<br/>
+                    当设备连线的时候，指令将会下发到对应的硬件手表上
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">返回列表</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script>
+
+        $("#EnableTime").datetimepicker({
+            language: "zh-CN",
+            format: 'yyyy-mm-dd hh:ii'
+        });
+
+        $("#ExpireTime").datetimepicker({
+            language: "zh-CN",
+            format: 'yyyy-mm-dd hh:ii'
+        });
+
+    </script>
+}

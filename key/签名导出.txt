@@ -1,0 +1,33 @@
+密钥库类型: JKS
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: key0
+创建日期: 2018-3-2
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=TAK, OU=TAK, O=TAK, L=SHENZHEN, ST=GUANGDONG, C=86
+发布者: CN=TAK, OU=TAK, O=TAK, L=SHENZHEN, ST=GUANGDONG, C=86
+序列号: 4e7db1fb
+有效期为 Fri Mar 02 01:44:10 CST 2018 至 Tue Feb 24 01:44:10 CST 2043
+证书指纹:
+         MD5:  42:D5:A2:EC:CC:2F:7E:0F:3C:7D:E1:47:7C:EC:6B:8D
+         SHA1: B8:68:C5:55:48:6A:9F:B2:66:3F:09:B3:CB:38:58:A2:FB:42:5B:F0
+         SHA256: 7C:04:82:4D:ED:55:8B:4B:5F:C3:A0:BE:CB:02:AC:D9:FF:72:E7:70:48:6F:41:27:45:24:21:F7:F0:5A:15:2E
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 81 E8 93 A9 38 EC AE 19   7F 04 82 65 DB 51 17 0B  ....8......e.Q..
+0010: 47 98 F5 33                                        G..3
+]
+]
+
+

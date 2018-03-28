@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_hw_setting_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context="hx.smartschool.fragments.setting.HwSettingFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/fragment_hw_setting_image_watch"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_smart_watch" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_cc_tag" />
+
+
+                <TextView
+                    android:id="@+id/fragment_hw_setting_text_hwcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="手表编码："
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_battery" />
+
+
+                <TextView
+                    android:id="@+id/fragment_hw_setting_text_battery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="手表电量："
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment_basic_setting_gridlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_column="4"
+        android:layout_row="3"
+        android:layout_weight="1">
+
+        <!-- r:0 C:0 查看版本号 -->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_version"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="0"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_version"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_version" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="手表版本号"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- r:0 C:1 寻找手表 -->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_find"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="0"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_find"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_find" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="寻找手表"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- r:0 C:2 重启手表 -->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_reboot"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="2"
+            app:layout_columnWeight="1"
+            app:layout_row="0"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_reboot"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_reboot" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_reboot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="重启手表"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- r:0 C:3 手表关闭 -->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_shutdown"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="3"
+            app:layout_columnWeight="1"
+            app:layout_row="0"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_shutdown"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_off" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_shutdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="手表关机"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <!-- r:1 C:0 发送消息 -->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_message"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_message"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_message" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发送消息"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <!-- r:1 C:1 -->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_call"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_call"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_phone_call" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="拨打电话"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+
+        <!-- r:1 C:2设置电话本-->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_phonebook"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="2"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_phone_book"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_phonebook" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_phone_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="电话本设置"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <!-- r:1 C:3 SOS 设置-->
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_sos"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="3"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_sos"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_sos" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_sos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SOS号码设置"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <!-- r:2 C:0 设备绑定-->
+
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_binding"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="2"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_binding"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_menu_manage" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_binding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设备绑定"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <!-- r:2 C:1  回复出厂设置-->
+
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_factory"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="2"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_factory"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_factory" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_factory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="恢复出厂（!）"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- r:2 C:2  KUN测试-->
+
+        <LinearLayout
+            android:id="@+id/fragment_basic_setting_item_watch_factory2"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_column="2"
+            app:layout_columnWeight="1"
+            app:layout_row="2"
+            app:layout_rowWeight="1">
+
+
+            <ImageView
+                android:id="@+id/fragment_basic_setting_image_factory2"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_watch_factory" />
+
+            <TextView
+                android:id="@+id/fragment_basic_setting_text_factory2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="待开发"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/fragment_basic_setting_hw_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="版本号" />
+</LinearLayout>
+
+
+
+
+
+

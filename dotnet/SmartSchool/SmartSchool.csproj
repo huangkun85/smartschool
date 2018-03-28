@@ -1,0 +1,97 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-SmartSchool-81E16CE3-F3B1-458F-A50E-71BC94BCA4C7</UserSecretsId>
+    <Version>1.0.0.7</Version>
+    <AssemblyVersion>1.0.0.9</AssemblyVersion>
+    <FileVersion>1.0.0.9</FileVersion>
+    <Description>智慧校园项目</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\lib\bootstrap\plugins\datetimepicker\locales\**" />
+    <Content Remove="wwwroot\lib\bootstrap\plugins\datetimepicker\locales\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap\plugins\datetimepicker\locales\**" />
+    <None Remove="wwwroot\lib\bootstrap\plugins\datetimepicker\locales\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\bootstrap-datetimepicker.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ar.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.az.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.bg.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.bn.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ca.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.cs.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.da.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.de.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ee.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.el.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.es.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.fi.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.fr.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.he.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.hr.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.hu.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.hy.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.id.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.is.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.it.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ja.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ka.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ko.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.lt.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.lv.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ms.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.nb.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.nl.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.no.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.pl.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.pt.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ro.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.rs.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ru.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.sk.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.sl.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.sv.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.sw.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.th.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.tr.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.ua.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.uk.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <None Include="wwwroot\lib\bootstrap\plugins\datetimepicker\js\locales\bootstrap-datetimepicker.zh-TW.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Admin\RoleMgr\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseAccess\DataBaseAccess.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="http://json.schemastore.org/bowerrc" /></VisualStudio></ProjectExtensions>
+
+</Project>

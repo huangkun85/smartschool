@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DataBaseAccess.Dtos.ApplicationRole>
+
+@{
+    ViewData["Title"] = "角色管理";
+}
+
+<h2>系统角色管理</h2>
+
+<p>
+    <a asp-action="Create">新建角色</a>
+</p>
+
+<table id="table"></table>
+
+@section Scripts {
+
+    <script>
+
+        var table = $('#table');
+
+        $(function() {
+
+            table.bootstrapTable({
+                url: "/AppRoleMgr/DataTableIndex",
+                method: 'get',
+                dataType: "json",
+                uniqueId: "id",
+                cache: false, // 是否使用缓存
+                striped: true, // 是否显示分割线
+                search: true, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端
+                strictSearch: true, // 全匹配搜索，否则为模糊搜索
+                showColumns: true, // 是否显示所有的列
+                showRefresh: true, // 是否显示刷新按钮
+                showToggle: true, // 是否显示详细视图和列表视图
+                clickToSelect: true, // 是否启用点击选中行
+                singleSelect: false,
+                pagination: true,
+                sidePagination: 'server',
+                pageNumber: 1,
+                pageSize: 2,
+                pageList: [2, 4, 8, 10],
+                queryParamsType: "limit",
+                showFooter: true,
+                columns: [
+                    {
+                        title: '角色名',
+                        field: 'name',
+                        sortable: true
+                    },
+                    {
+                        title: '角色描述',
+                        field: 'description',
+                        sortable: true
+                    },
+                    {
+                        title: '操作',
+                        field: 'id',
+                        sortable: false,
+                        align: 'center',
+
+                        formatter: function(value, row, index) {
+                            var html = "<a href='/AppRoleMgr/Edit/'" +
+                                value +
+                                ">编辑角色</a>" +
+                                " | " +
+                                "<a href= '/AppRoleMgr/Delete/'" +
+                                value +
+                                ">删除角色</a>" +
+                                " | " +
+                                "<a href= '/AppRoleMgr/Delete/'" +
+                                value +
+                                ">查看用户</a>";
+                            return html;
+
+
+                        },
+
+                    }
+                ]
+            });
+        });
+
+        $(window).resize(function() {
+            table.bootstrapTable('resetView');
+        });
+
+    </script>
+
+}

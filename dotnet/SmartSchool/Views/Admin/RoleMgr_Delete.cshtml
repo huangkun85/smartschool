@@ -1,0 +1,35 @@
+﻿@model DataBaseAccess.Dtos.ApplicationRole
+
+@{
+    ViewData["Title"] = "删除角色";
+}
+
+<h2>删除角色</h2>
+
+<h3>确认删除</h3>
+<div>
+    <h4>角色信息</h4>
+    <hr/>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input asp-for="Name" class="hidden" value="@Model.Name"/>
+        <input type="submit" value="删除" class="btn btn-default"/> |
+        <a asp-action="Index">返回列表</a>
+    </form>
+</div>

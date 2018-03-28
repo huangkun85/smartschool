@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_bind_device_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="hx.smartschool.fragments.setting.BindDeviceFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手表信息绑定"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="佩戴手表硬件编码："
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/fragment_bind_device_edit_hwcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="手表硬件的唯一编码"
+            android:imeActionId="6"
+            android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="12345678" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SMS短信预警号码："
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/fragment_bind_device_edit_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="接收短信手机号码"
+            android:imeActionId="6"
+            android:imeActionLabel="保存"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="12345678" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/fragment_bind_device_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="说明：硬件编码为手表指定的一组编码，请查看说明书\nSMS短信号码为手表佩戴者的健康数值出现异常时候，向指定的号码发送短信" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/fragment_bind_device_text_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="12345678" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

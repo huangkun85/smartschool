@@ -1,0 +1,18 @@
+#tooling { float: right; }
+
+.clear {
+    cursor: pointer;
+    display: block;
+    height: 13px;
+    margin-top: -10px;
+    opacity: 0.6;
+    position: absolute;
+    right: 26px;
+    top: 50%;
+    width: 13px;
+    z-index: 100;
+}
+
+.clear > i { font-size: 1.5em; }
+
+.clear > i:hover { color: hsl(0, 0%, 75%); }

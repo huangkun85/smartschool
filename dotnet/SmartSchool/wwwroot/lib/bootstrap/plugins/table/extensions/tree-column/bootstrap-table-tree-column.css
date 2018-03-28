@@ -1,0 +1,35 @@
+.table:not(.table-condensed) > tbody > tr > td.treenode {
+    border-bottom: solid #fff 1px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.table:not(.table-condensed) > tbody > tr:last-child > td.treenode { border-bottom: none }
+
+.treenode .text {
+    display: block;
+    float: left;
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+
+.treenode .vertical, .treenode .vertical.last {
+    border-left: dashed silver 1px;
+    display: block;
+    float: left;
+    height: 38px;
+    margin-left: 8px;
+    width: 1px;
+}
+
+.treenode .vertical.last { height: 15px }
+
+.treenode .space, .treenode .node {
+    display: block;
+    float: left;
+    height: 5px;
+    margin-top: 15px;
+    width: 15px;
+}
+
+.treenode .node { border-top: dashed silver 1px }

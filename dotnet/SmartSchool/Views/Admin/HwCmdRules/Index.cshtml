@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "预设命令列表";
+}
+
+<h2>View</h2>
+
+<p>
+    <a asp-action="Create">新建规则</a>
+</p>
+<table id="table"></table>
+
+
+@section Scripts {
+
+    <script>
+
+
+        //创建时间格式化显示
+        var convertTime = function(value, row, index) {
+
+            var curTime = new Date(value).Format("yyyy-MM-dd hh:mm");
+
+            return curTime; //直接调用公共JS里面的时间类处理的办法
+        };
+
+
+        var table = $('#table');
+
+        $(function() {
+
+            table.bootstrapTable({
+                url: "/HwCmdRules/Index",
+                method: 'get',
+                dataType: "json",
+                uniqueId: "id",
+                cache: false, // 是否使用缓存
+                striped: true, // 是否显示分割线
+                search: true, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端
+                strictSearch: true, // 全匹配搜索，否则为模糊搜索
+                showColumns: true, // 是否显示所有的列
+                showRefresh: true, // 是否显示刷新按钮
+                showToggle: true, // 是否显示详细视图和列表视图
+                clickToSelect: true, // 是否启用点击选中行
+                singleSelect: false,
+                pagination: true,
+                sidePagination: 'server',
+                pageNumber: 1,
+                pageSize: 2,
+                pageList: [2, 4, 8, 10],
+                queryParamsType: "limit",
+                showFooter: true,
+                columns: [
+                    {
+                        title: '规则名',
+                        field: 'name',
+                        sortable: true
+                    },
+                    {
+                        title: '类型',
+                        field: 'cmdType',
+                    },
+                    {
+                        title: '规则内容',
+                        field: 'cmdData',
+                    },
+                    {
+                        title: '启用时间',
+                        field: 'enableTime',
+                        formatter: convertTime
+                    },
+                    {
+                        title: '失效时间',
+                        field: 'expireTime',
+                        formatter: convertTime
+                    },
+                    {
+                        title: '创建时间',
+                        field: 'createTime',
+                        formatter: convertTime
+                    },
+                    {
+                        title: '更新时间',
+                        field: 'updateTime',
+                        formatter: convertTime
+                    },
+                    {
+                        title: '状态',
+                        field: 'status'
+                    },
+                    {
+                        title: '操作',
+                        field: 'id',
+                        sortable: false,
+                        align: 'center',
+                        width: 150,
+                        formatter: function(value, row, index) {
+                            var html = "<a href='/AppRoleMgr/Edit/'" +
+                                value +
+                                ">编辑</a>" +
+                                " | " +
+                                "<a href= '/AppRoleMgr/Delete/'" +
+                                value +
+                                ">删除</a>" +
+                                " | " +
+                                "<a href= '/AppRoleMgr/Delete/'" +
+                                value +
+                                ">手表日志</a>";
+                            return html;
+
+
+                        },
+
+                    }
+                ]
+            });
+        });
+
+        $(window).resize(function() {
+            table.bootstrapTable('resetView');
+        });
+
+    </script>
+
+}

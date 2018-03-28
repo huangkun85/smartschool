@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ac_main_buttom_nav_heartbeat"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/nav_title_heart" />
+
+    <item
+        android:id="@+id/ac_main_buttom_nav_pedometer"
+        android:icon="@drawable/ic_run_pedo"
+        android:title="@string/nav_title_pedometer" />
+
+    <item
+        android:id="@+id/ac_main_buttom_nav_location"
+        android:icon="@drawable/ic_location"
+        android:title="@string/nav_title_location" />
+
+    <item
+        android:id="@+id/ac_main_buttom_nav_mime"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/nav_title_mine" />
+
+</menu>
