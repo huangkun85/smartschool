@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmartSchool.Services;
+using SmartSchool.Services.RabbitMQ;
 
 namespace SmartSchool
 {
@@ -57,29 +58,12 @@ namespace SmartSchool
             //// 增加MVC
             services.AddMvc();
 
-            //// 消息队列-发送-工厂
-            //RabbitMQConfigModel RabbitMQConfig = Configuration.GetSection("RabbitMQ").Get<RabbitMQConfigModel>();
-            //IRabbitMQFactoryService mqFactoryService = new RabbitMQFactoryService(RabbitMQConfig);
 
+            // 消息队列-发送-工厂
+            RabbitMqConfigModel rabbitMqConfig = Configuration.GetSection("RabbitMQ").Get<RabbitMqConfigModel>();
+            IRabbitMqFactoryService mqFactoryService = new RabbitMQFactoryService(rabbitMqConfig);
+            services.AddSingleton(mqFactoryService);
 
-            //// Socket - 端口号
-            //int port = int.Parse(Configuration.GetSection("SocketServerPort").Value);
-            //ISocketServer socketServer = new SocketServer(port, mqFactoryService);
-            //services.AddSingleton(socketServer);
-
-            //// 消费者队列       
-            //IRabitMQConsumerService mqConsumerService = new RabitMQConsumerService(RabbitMQConfig, socketServer);
-
-            //// 发送队列
-            //services.AddSingleton(mqFactoryService);
-
-            //// 接收队列
-            //services.AddSingleton(mqConsumerService);
-
-
-            //ServiceProvider provider = services.BuildServiceProvider();
-            //ApplicationDbContext dbContext = provider.GetService<ApplicationDbContext>();
-            //socketServer.SetApplicationDbcontext(dbContext);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

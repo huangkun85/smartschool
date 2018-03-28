@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
+using NLog;
 using RabbitMQ.Client;
 using SocketServer.RabbitMQ.Interfaces;
 
@@ -6,28 +8,31 @@ namespace SocketServer.RabbitMQ.Services
 {
     public abstract class AbstractRabbitMqService : IRabbitMqService
     {
-        protected string DirectQueueName;
 
-        protected string HostName;
+        public string HostName;
 
-        protected string Password;
+        public string UserName;
 
-        protected string TopicExchangeName;
+        public string Password;
 
-        protected string UserName;
+        public string VirtualHostName;
 
-        protected string VHost;
+        public string ExchangeName;
+
+        public string QueueName;
 
 
-        protected AbstractRabbitMqService(string hostName, string userName, string password, string vHost,
-            string directQueueName, string topicExchangeName)
+        public Logger ServiceLogger;
+
+
+        protected AbstractRabbitMqService(string hostName, string userName, string password, string virtualHostName, string exchangeName, string queueName)
         {
             HostName = hostName;
             UserName = userName;
             Password = password;
-            VHost = vHost;
-            DirectQueueName = directQueueName;
-            TopicExchangeName = topicExchangeName;
+            VirtualHostName = virtualHostName;
+            ExchangeName = exchangeName;
+            QueueName = queueName;
         }
 
 
@@ -46,7 +51,7 @@ namespace SocketServer.RabbitMQ.Services
                     HostName = HostName,
                     UserName = UserName,
                     Password = Password,
-                    VirtualHost = VHost
+                    VirtualHost = VirtualHostName
                 };
 
             if (MqConnection == null || MqChannel == null || !MqConnection.IsOpen || !MqChannel.IsOpen)
@@ -54,25 +59,32 @@ namespace SocketServer.RabbitMQ.Services
                 MqConnection = MqConnectionFactory.CreateConnection();
                 MqChannel = MqConnection.CreateModel();
                 Console.WriteLine("Connected to MQ Server");
-                PostCreateConnection();
+                DoAfterCreateNewMqConnection();
             }
 
-            StartAfterGetConnection();
+            DoAfterMqConnection();
         }
 
 
         public void Stop()
         {
-            throw new NotImplementedException();
+
+            MqChannel.Close();
+            MqConnection.Close();
+
+            Console.WriteLine("Stop RabbitMQ Service");
         }
+
 
         /// <summary>
         ///     获得连接对象后执行
         /// </summary>
-        protected abstract void StartAfterGetConnection();
+        protected abstract void DoAfterMqConnection();
 
 
-        //创建新链接的时候处理该事件
-        protected abstract void PostCreateConnection();
+        /// <summary>
+        /// 新建MQ连接
+        /// </summary>
+        protected abstract void DoAfterCreateNewMqConnection();
     }
 }

@@ -2,60 +2,76 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using DataBaseAccess;
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Newtonsoft.Json;
 using SocketServer.Config;
 using SocketServer.Handler;
 using SocketServer.RabbitMQ.Interfaces;
-using SocketServer.RabbitMQ.Services;
+using SocketServer.RabbitMQ.Services.Comsumer;
+using SocketServer.RabbitMQ.Services.Factory;
 using SocketServer.SocketService;
 
 namespace SocketServer
 {
-    internal class Program
+    public class Program
     {
         private static void Main(string[] args)
         {
+            Console.WriteLine("Start to Load Config File");
             // 读取配置文件
             var strPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsetting.json");
             var r = File.OpenText(strPath);
             var appsetting = r.ReadToEndAsync().Result;
             var appSettingModel = JsonConvert.DeserializeObject<AppSetting>(appsetting);
-
             var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            var strTitle = string.Format($"Socket Server v.{{0}}", version);
-
+            var strTitle = string.Format("SocketServer[{0}]v{1}", appSettingModel.SocketServerId, version);
             Console.Title = strTitle;
-            Console.OutputEncoding = Encoding.Default;
+            Console.WriteLine("Load Config Finished");
+            Console.WriteLine();
 
 
-            Console.WriteLine("1. Start Producer MQ");
-
+            Console.WriteLine("Start to Init MQ Factory [Topic->Apps]");
             IRabbitMqFactoryService rabbitMqFactoryService =
-                new RabbitMqFactoryService(appSettingModel.RabbitMq.HostName, appSettingModel.RabbitMq.UserName,
-                    appSettingModel.RabbitMq.Password,
-                    appSettingModel.RabbitMq.VirtualHost, appSettingModel.RabbitMq.DirectQueueName,
-                    appSettingModel.RabbitMq.TopicExchangeName);
-
+                new MqFactoryService(
+                    appSettingModel.RabbitMqSetting.HostName,
+                    appSettingModel.RabbitMqSetting.UserName,
+                    appSettingModel.RabbitMqSetting.Password,
+                    appSettingModel.RabbitMqSetting.VirtualHost,
+                    appSettingModel.RabbitMqSetting.SocketServerToAppExchangeName
+                );
             rabbitMqFactoryService.Start();
 
-            Console.WriteLine("Producer MQ Started");
+            Console.WriteLine("Load MQ Factory Finished");
+            Console.WriteLine();
 
 
-            Console.WriteLine("2. Start Comsumer MQ");
+            Console.WriteLine("Start to Init MQ Comsumer [Direct<-Apps]");
+            IMqDirectConsumerService mqDirectConsumerService =
+                new MqDirectConsumerService(
+                    appSettingModel.RabbitMqSetting.HostName,
+                    appSettingModel.RabbitMqSetting.UserName,
+                    appSettingModel.RabbitMqSetting.Password,
+                    appSettingModel.RabbitMqSetting.VirtualHost,
+                    appSettingModel.RabbitMqSetting.AppToSocketServerExchangeName,
+                    appSettingModel.RabbitMqSetting.AppToSocketServerQueueName
+                );
+            mqDirectConsumerService.Start();
 
-            IRabitMqConsumerService rabitMqConsumerService =
-                new RabitMqConsumerService(appSettingModel.RabbitMq.HostName, appSettingModel.RabbitMq.UserName,
-                    appSettingModel.RabbitMq.Password,
-                    appSettingModel.RabbitMq.VirtualHost, appSettingModel.RabbitMq.DirectQueueName,
-                    appSettingModel.RabbitMq.TopicExchangeName);
+            Console.WriteLine("Load MQ Comsumer[Direct] Finished");
+            Console.WriteLine();
 
-            rabitMqConsumerService.Start();
 
-            Console.WriteLine("Comsumer MQ Started...");
+
+            Console.WriteLine("Start to Init MQ Comsumer [Direct<-Apps]");
+
+            IMqTopicConsumerService mqTopicConsumerService = null;
+
+
+            mqTopicConsumerService.Start();
+
+            Console.WriteLine("Load MQ Comsumer[Direct] Finished");
+            Console.WriteLine();
 
 
             Console.WriteLine("3. Start Socket Service");
@@ -67,14 +83,13 @@ namespace SocketServer
             Console.WriteLine("4. Start DataBase Access");
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
             optionsBuilder.UseNpgsql(appSettingModel.DbConnectionString);
-            ApplicationDbContext applicationDbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var applicationDbContext = new ApplicationDbContext(optionsBuilder.Options);
             Console.Write("\t" + applicationDbContext.HwProfile.Count());
             Console.WriteLine(" DataBase Access ready");
 
 
-
             var mqMsgrHandler = new MessageQueueToSocketHandler(socketServer);
-            rabitMqConsumerService.AddListener("mainHandler", mqMsgrHandler);
+            mqDirectConsumerService.AddListener("mainHandler", mqMsgrHandler);
             Console.WriteLine($"Register Main MQ Message Handler");
 
 
@@ -84,9 +99,11 @@ namespace SocketServer
 
 
             // Soket服务器主控端
-            CentralSocketServerControlHandler centralSocketServerControlHandler = new CentralSocketServerControlHandler(optionsBuilder.Options);
-            socketServer.AddSocketMessageReceivedListener("CentralSocketServerControlHandler", centralSocketServerControlHandler);
-            rabitMqConsumerService.AddListener("CentralSocketServerControlHandler", centralSocketServerControlHandler);
+            var centralSocketServerControlHandler = new CentralSocketServerControlHandler(optionsBuilder.Options);
+            socketServer.AddSocketMessageReceivedListener("CentralSocketServerControlHandler",
+                centralSocketServerControlHandler);
+            mqDirectConsumerService.AddListener("CentralSocketServerControlHandler",
+                centralSocketServerControlHandler);
 
             Console.ReadLine();
         }

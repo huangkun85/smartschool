@@ -1,13 +1,17 @@
 ﻿{
   "DbConnectionString": "Server=120.77.222.145;Port=5432;UserId=postgres;Password=1234;Database=smartschool.test;",
   "SocketServerPort": 60000,
-  "RabbitMQ": {
+  "SocketServerId": "ss1",
+  "RabbitMqSetting": {
+    "SocketServerToAppExchangeName": "ex_ss1_socket_to_apps",
+    "MgrToSocketServerExchangeName": "ex_ss1_mgr_to_socket",
+    "MgrToSocketServerRoutingKey": "rouk_ss1_mgr_to_socket",
+    "AppToSocketServerExchangeName": "ex_ss1_app_to_socket",
+    "AppToSocketServerQueueName": "queue_ss1_app_to_socket",
     "HostName": "huoyan888.com",
-    "UserName": "huoyan888",
     "Password": "huoyan888",
-    "VirtualHost": "hx",
-    "DirectQueueName": "HwToServerQ",
-    "TopicExchangeName": "ServerToAppsE"
+    "UserName": "huoyan888",
+    "VirtualHost": "hx"
   }
 
 }

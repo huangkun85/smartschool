@@ -38,6 +38,11 @@ namespace SocketServer.SocketService
         private readonly IPEndPoint _socketIpEndPoint;
 
         /// <summary>
+        ///     与外部交互的接口 Socket新消息到达通知
+        /// </summary>
+        private readonly Dictionary<string, ISocketMessageReceivedListener> _socketMessageReceivedListeners;
+
+        /// <summary>
         ///     标志位
         /// </summary>
         private bool _isRunning;
@@ -51,11 +56,6 @@ namespace SocketServer.SocketService
         ///     TCP 监听
         /// </summary>
         private Socket _socketListener;
-
-        /// <summary>
-        ///     与外部交互的接口 Socket新消息到达通知
-        /// </summary>
-        private readonly Dictionary<string, ISocketMessageReceivedListener> _socketMessageReceivedListeners;
 
 
         #region 构造函数与基础启动停止
@@ -171,7 +171,7 @@ namespace SocketServer.SocketService
                 _connectedSignal.Set();
 
                 // Get the socket that handles the client request.
-                var listener = (Socket)ar.AsyncState;
+                var listener = (Socket) ar.AsyncState;
                 var handler = listener.EndAccept(ar);
 
                 Console.WriteLine("<-- Accept New Socket Connection\t{0}", DateTime.Now);
@@ -204,7 +204,7 @@ namespace SocketServer.SocketService
         {
             // Retrieve the state object and the handler socket
             // from the asynchronous state object.
-            var state = (StateObject)ar.AsyncState;
+            var state = (StateObject) ar.AsyncState;
             var handler = state.WorkSocket;
 
             try
@@ -259,7 +259,7 @@ namespace SocketServer.SocketService
             try
             {
                 // Retrieve the socket from the state object.
-                var handler = (Socket)ar.AsyncState;
+                var handler = (Socket) ar.AsyncState;
 
                 // Complete sending the data to the remote device.
                 var bytesSent = handler.EndSend(ar);
@@ -350,9 +350,7 @@ namespace SocketServer.SocketService
                 //收到命令后的处理
 
                 foreach (var kv in _socketMessageReceivedListeners)
-                {
-                    kv.Value.NewSocketMessage(receivedCmd, client,this);
-                }
+                    kv.Value.NewSocketMessage(receivedCmd, client, this);
 
 
                 //接收到其他命令则再次读取
@@ -391,7 +389,7 @@ namespace SocketServer.SocketService
 
 
         /// <summary>
-        /// 发送命令
+        ///     发送命令
         /// </summary>
         /// <param name="socket">活动的Socket</param>
         /// <param name="cmdPlainText">平面text</param>
@@ -426,7 +424,6 @@ namespace SocketServer.SocketService
         {
             return _isRunning;
         }
-
 
         #endregion
     }

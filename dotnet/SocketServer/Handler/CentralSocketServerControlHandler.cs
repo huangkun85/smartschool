@@ -14,15 +14,17 @@ using SocketServer.SocketService.SocketModel;
 
 namespace SocketServer.Handler
 {
+
     /// <summary>
-    /// 服务器集中控制
+    /// Socket 服务器集中控制
     /// </summary>
     public class CentralSocketServerControlHandler : ISocketMessageReceivedListener, IMessageQueueMessageReceivedListener
     {
-        //数据库连接字符串
+        //数据库连接
         private readonly DbContextOptions<ApplicationDbContext> _dbContextOptionsoptions;
-        private List<HwCmdRuleDto> _publishCmdRule;
 
+        private List<HwCmdRuleDto> _publishCmdRule;
+        
 
         public CentralSocketServerControlHandler(DbContextOptions<ApplicationDbContext> dbContextOptionsoptions)
         {

@@ -1,23 +1,30 @@
 ﻿using DataBaseAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SmartSchool.Services.SocketServer;
+using SmartSchool.Services.RabbitMQ;
 
 namespace SmartSchool.Controllers.Admin
 {
+
+    /// <summary>
+    /// 向消息队列发送控制消息
+    /// </summary>
     public class SocketServerMgrController : Controller
     {
         public const string Path = "/Views/Admin/SocketServerMgr/";
+
         protected readonly ApplicationDbContext _applicationDbContext;
+        private readonly IRabbitMqFactoryService _rabbitMqFactoryService;
         protected readonly ILogger _logger;
-        protected readonly ISocketServer _socketServer;
+
 
         public SocketServerMgrController(
-            ISocketServer socketServer,
+       
             ApplicationDbContext dbContext,
+            IRabbitMqFactoryService rabbitMqFactoryService,
             ILogger<HwCmdRulesController> logger)
         {
-            _socketServer = socketServer;
+            _rabbitMqFactoryService = rabbitMqFactoryService;
             _applicationDbContext = dbContext;
             _logger = logger;
         }
@@ -30,25 +37,19 @@ namespace SmartSchool.Controllers.Admin
 
         public IActionResult Start()
         {
-            //var dtolist = _applicationDbContext.HwCmdRule.ToList();
-            //_socketServer.SetRuleList(dtolist);
-
-            _socketServer.Start();
             ViewData["Message"] = "开始服务成功";
             return View($"{Path}Index.cshtml");
         }
 
         public IActionResult Stop()
         {
-            _socketServer.Stop();
+
             ViewData["Message"] = "停止服务成功";
             return View($"{Path}Index.cshtml");
         }
 
         public IActionResult Update()
         {
-            //var dtolist = _applicationDbContext.HwCmdRule.ToList();
-            //_socketServer.SetRuleList(dtolist);
 
             ViewData["Message"] = "更新规则成功";
             return View($"{Path}Index.cshtml");

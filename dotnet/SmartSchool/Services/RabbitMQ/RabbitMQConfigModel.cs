@@ -1,6 +1,6 @@
-﻿namespace SmartSchool.Services.RabbitMQ.Model
+﻿namespace SmartSchool.Services.RabbitMQ
 {
-    public class RabbitMQConfigModel
+    public class RabbitMqConfigModel
     {
         public string HostName { get; set; }
 

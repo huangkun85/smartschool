@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-SmartSchool-81E16CE3-F3B1-458F-A50E-71BC94BCA4C7</UserSecretsId>
-    <Version>1.0.0.7</Version>
-    <AssemblyVersion>1.0.0.9</AssemblyVersion>
-    <FileVersion>1.0.0.9</FileVersion>
+    <Version>1.0.0.10</Version>
+    <AssemblyVersion>1.0.0.10</AssemblyVersion>
+    <FileVersion>1.0.0.10</FileVersion>
     <Description>智慧校园项目</Description>
   </PropertyGroup>
 

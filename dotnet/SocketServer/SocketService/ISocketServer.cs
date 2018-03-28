@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using SocketServer.SocketService.Listener;
 using SocketServer.SocketService.SocketModel;
 
@@ -32,7 +31,7 @@ namespace SocketServer.SocketService
         /// <param name="cmdToSend"></param>
         void SendCommand(HwCmd cmdToSend);
 
-        void SendCommand(Socket socket, String cmdPlainText);
+        void SendCommand(Socket socket, string cmdPlainText);
 
         /// <summary>
         ///     增加一个Socket监听器
