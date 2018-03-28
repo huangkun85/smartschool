@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by DEV on 2018/3/11.
+ * KUN
  */
 
 public class HxContactView extends LinearLayout {
