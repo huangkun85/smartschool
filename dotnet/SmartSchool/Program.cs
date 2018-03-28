@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace SmartSchool
 {
+    /// <summary>
+    /// 启动入口
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)
